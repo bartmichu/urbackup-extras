@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2020-09-05T19:42:58Z</date>
+    <groups>
+        <group>
+            <name>Templates/Applications</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template App UrBackup Client</template>
+            <name>Template App UrBackup Client</name>
+            <groups>
+                <group>
+                    <name>Templates/Applications</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>UrBackup Client</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>UrBackup Client service active</name>
+                    <key>urbackup-client.service.active</key>
+                    <history>14d</history>
+                    <trends>60d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Client</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}=0</expression>
+                            <name>UrBackup Client service is not active</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>UrBackup Client service enabled</name>
+                    <key>urbackup-client.service.enabled</key>
+                    <history>14d</history>
+                    <trends>60d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Client</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}=0</expression>
+                            <name>UrBackup Client service is disabled</name>
+                            <priority>WARNING</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>UrBackup Client service failed</name>
+                    <key>urbackup-client.service.failed</key>
+                    <history>14d</history>
+                    <trends>60d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Client</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}=1</expression>
+                            <name>UrBackup Client service is failed</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>Service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Up</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
