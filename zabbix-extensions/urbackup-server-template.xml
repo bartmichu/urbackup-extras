@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2020-06-25T06:45:32Z</date>
+    <date>2020-09-05T19:31:29Z</date>
     <groups>
         <group>
             <name>Templates/Applications</name>
@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template App UrBackup Server by user parameters</template>
-            <name>Template App UrBackup Server by user parameters</name>
+            <template>Template App UrBackup Server</template>
+            <name>Template App UrBackup Server</name>
             <groups>
                 <group>
                     <name>Templates/Applications</name>
@@ -18,25 +18,116 @@
             </groups>
             <applications>
                 <application>
-                    <name>UrBackup-Server</name>
+                    <name>UrBackup Server</name>
                 </application>
             </applications>
             <items>
                 <item>
-                    <name>UrBackup Server package update</name>
-                    <key>urbackup-server.package.upgradeable</key>
-                    <delay>10m</delay>
-                    <history>7d</history>
+                    <name>UrBackup Server webinterface accessible (HTTP)</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[http,,80]</key>
+                    <history>14d</history>
                     <trends>30d</trends>
                     <applications>
                         <application>
-                            <name>UrBackup-Server</name>
+                            <name>UrBackup Server</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{max(#3)}=0</expression>
+                            <name>UrBackup Server webinterface is not accessible (HTTP)</name>
+                            <priority>WARNING</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>UrBackup Server webinterface accessible (FastCGI)</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[http,,55413]</key>
+                    <history>14d</history>
+                    <trends>30d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Server</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{max(#3)}=0</expression>
+                            <name>UrBackup Server webinterface is not accessible (FastCGI)</name>
+                            <priority>WARNING</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>UrBackup Server webinterface accessible (HTTPS)</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[https,,443]</key>
+                    <history>14d</history>
+                    <trends>30d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Server</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{max(#3)}=0</expression>
+                            <name>UrBackup Server webinterface is not accessible (HTTPS)</name>
+                            <priority>WARNING</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>UrBackup Server service accessible (internet mode)</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[tcp,,55415]</key>
+                    <history>14d</history>
+                    <trends>30d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Server</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{max(#3)}=0</expression>
+                            <name>UrBackup Server service is not accessible (internet mode)</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>UrBackup Server package updates</name>
+                    <key>urbackup-server.package.upgradeable</key>
+                    <delay>10m</delay>
+                    <history>14d</history>
+                    <trends>60d</trends>
+                    <applications>
+                        <application>
+                            <name>UrBackup Server</name>
                         </application>
                     </applications>
                     <triggers>
                         <trigger>
                             <expression>{last()}&gt;0</expression>
-                            <name>UrBackup Server package can be upgraded</name>
+                            <name>UrBackup Server package is upgradeable</name>
                             <priority>INFO</priority>
                             <manual_close>YES</manual_close>
                         </trigger>
@@ -45,11 +136,11 @@
                 <item>
                     <name>UrBackup Server service active</name>
                     <key>urbackup-server.service.active</key>
-                    <history>7d</history>
-                    <trends>30d</trends>
+                    <history>14d</history>
+                    <trends>60d</trends>
                     <applications>
                         <application>
-                            <name>UrBackup-Server</name>
+                            <name>UrBackup Server</name>
                         </application>
                     </applications>
                     <valuemap>
@@ -58,7 +149,7 @@
                     <triggers>
                         <trigger>
                             <expression>{last()}=0</expression>
-                            <name>UrBackup Server service is down</name>
+                            <name>UrBackup Server service is not active</name>
                             <priority>HIGH</priority>
                         </trigger>
                     </triggers>
@@ -67,11 +158,11 @@
                     <name>UrBackup Server service enabled</name>
                     <key>urbackup-server.service.enabled</key>
                     <delay>10m</delay>
-                    <history>7d</history>
-                    <trends>30d</trends>
+                    <history>14d</history>
+                    <trends>60d</trends>
                     <applications>
                         <application>
-                            <name>UrBackup-Server</name>
+                            <name>UrBackup Server</name>
                         </application>
                     </applications>
                     <triggers>
@@ -86,11 +177,11 @@
                 <item>
                     <name>UrBackup Server service failed</name>
                     <key>urbackup-server.service.failed</key>
-                    <history>7d</history>
-                    <trends>30d</trends>
+                    <history>14d</history>
+                    <trends>60d</trends>
                     <applications>
                         <application>
-                            <name>UrBackup-Server</name>
+                            <name>UrBackup Server</name>
                         </application>
                     </applications>
                     <valuemap>
