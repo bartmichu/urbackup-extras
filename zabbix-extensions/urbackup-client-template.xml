@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2020-09-05T19:42:58Z</date>
+    <date>2020-11-08T20:42:55Z</date>
     <groups>
         <group>
             <name>Templates/Applications</name>
@@ -23,10 +23,10 @@
             </applications>
             <items>
                 <item>
-                    <name>UrBackup Client service active</name>
+                    <name>UrBackup Client: service active</name>
                     <key>urbackup-client.service.active</key>
                     <history>14d</history>
-                    <trends>60d</trends>
+                    <trends>30d</trends>
                     <applications>
                         <application>
                             <name>UrBackup Client</name>
@@ -38,16 +38,16 @@
                     <triggers>
                         <trigger>
                             <expression>{last()}=0</expression>
-                            <name>UrBackup Client service is not active</name>
+                            <name>UrBackup Client: service is not active (i.e. running)</name>
                             <priority>HIGH</priority>
                         </trigger>
                     </triggers>
                 </item>
                 <item>
-                    <name>UrBackup Client service enabled</name>
+                    <name>UrBackup Client: service enabled</name>
                     <key>urbackup-client.service.enabled</key>
                     <history>14d</history>
-                    <trends>60d</trends>
+                    <trends>30d</trends>
                     <applications>
                         <application>
                             <name>UrBackup Client</name>
@@ -59,17 +59,17 @@
                     <triggers>
                         <trigger>
                             <expression>{last()}=0</expression>
-                            <name>UrBackup Client service is disabled</name>
+                            <name>UrBackup Client: service is disabled</name>
                             <priority>WARNING</priority>
                             <manual_close>YES</manual_close>
                         </trigger>
                     </triggers>
                 </item>
                 <item>
-                    <name>UrBackup Client service failed</name>
+                    <name>UrBackup Client: service failed</name>
                     <key>urbackup-client.service.failed</key>
                     <history>14d</history>
-                    <trends>60d</trends>
+                    <trends>30d</trends>
                     <applications>
                         <application>
                             <name>UrBackup Client</name>
@@ -81,8 +81,8 @@
                     <triggers>
                         <trigger>
                             <expression>{last()}=1</expression>
-                            <name>UrBackup Client service is failed</name>
-                            <priority>DISASTER</priority>
+                            <name>UrBackup Client: service is in failed state</name>
+                            <priority>HIGH</priority>
                         </trigger>
                     </triggers>
                 </item>
