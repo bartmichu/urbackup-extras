@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2020-11-08T20:41:44Z</date>
+    <date>2021-02-07T19:14:12Z</date>
     <groups>
         <group>
             <name>Templates/Applications</name>
@@ -26,6 +26,7 @@
                     <name>UrBackup Server: web interface accessible (HTTP)</name>
                     <type>SIMPLE</type>
                     <key>net.tcp.service[http,,80]</key>
+                    <delay>5m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>
@@ -49,6 +50,7 @@
                     <name>UrBackup Server: web interface accessible (internal)</name>
                     <type>SIMPLE</type>
                     <key>net.tcp.service[http,,55414]</key>
+                    <delay>5m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>
@@ -72,6 +74,7 @@
                     <name>UrBackup Server: web interface accessible (HTTPS)</name>
                     <type>SIMPLE</type>
                     <key>net.tcp.service[https,,443]</key>
+                    <delay>5m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>
@@ -95,6 +98,7 @@
                     <name>UrBackup Server: internet server accessible</name>
                     <type>SIMPLE</type>
                     <key>net.tcp.service[tcp,,55415]</key>
+                    <delay>5m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>
@@ -116,7 +120,7 @@
                 <item>
                     <name>UrBackup Server: package updates</name>
                     <key>urbackup-server.package.upgradeable</key>
-                    <delay>10m</delay>
+                    <delay>30m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>
@@ -157,7 +161,7 @@
                 <item>
                     <name>UrBackup Server: service enabled</name>
                     <key>urbackup-server.service.enabled</key>
-                    <delay>10m</delay>
+                    <delay>5m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.0</version>
-    <date>2020-11-08T20:42:55Z</date>
+    <date>2021-02-07T19:13:44Z</date>
     <groups>
         <group>
             <name>Templates/Applications</name>
@@ -18,10 +18,36 @@
             </groups>
             <applications>
                 <application>
+                    <name>urb</name>
+                </application>
+                <application>
                     <name>UrBackup Client</name>
                 </application>
             </applications>
             <items>
+                <item>
+                    <name>UrBackup Client: internet connected</name>
+                    <key>urbackup-client.internet-status.connected</key>
+                    <delay>10m</delay>
+                    <history>14d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>urb</name>
+                        </application>
+                        <application>
+                            <name>UrBackup Client</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;&quot;true&quot;</expression>
+                            <name>UrBackup Client: disconnected from internet server</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
                 <item>
                     <name>UrBackup Client: service active</name>
                     <key>urbackup-client.service.active</key>
@@ -46,6 +72,7 @@
                 <item>
                     <name>UrBackup Client: service enabled</name>
                     <key>urbackup-client.service.enabled</key>
+                    <delay>10m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
                     <applications>
