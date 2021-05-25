@@ -1,0 +1,4 @@
+---
+# zabbix-agent-urbackupuserparams vars main file
+
+included_path: "/etc/zabbix/zabbix_agentd.d"

@@ -1,0 +1,8 @@
+- name: Configure Zabbix Agent
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Configure User Parameters
+      ansible.builtin.include_role:
+        name: zabbix-agent-urbackupuserparams
