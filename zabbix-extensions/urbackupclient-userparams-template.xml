@@ -1,82 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>5.0</version>
-    <date>2021-05-24T16:47:18Z</date>
+    <version>5.4</version>
+    <date>2021-11-22T17:52:43Z</date>
     <groups>
         <group>
+            <uuid>a571c0d144b14fd4a87a9d9b2aa9fcd6</uuid>
             <name>Templates/Applications</name>
         </group>
     </groups>
     <templates>
         <template>
+            <uuid>4b6ce5308a8e4e1b912b040f2421de83</uuid>
             <template>Template urbackupclient-userparams by Zabbix agent active</template>
             <name>Template urbackupclient-userparams by Zabbix agent active</name>
-            <description>User parameters file at https://github.com/bartmichu/urbackup-extras/tree/master/zabbix-extensions</description>
+            <description>Corresponding user parameters file and installation instructions can be found at https://github.com/bartmichu/urbackup-extras/tree/master/zabbix-extensions</description>
             <groups>
                 <group>
                     <name>Templates/Applications</name>
                 </group>
             </groups>
-            <applications>
-                <application>
-                    <name>UrBackup Client</name>
-                </application>
-            </applications>
             <items>
                 <item>
-                    <name>UrBackup Client - connected (internet server)</name>
+                    <uuid>027a56b65b9e42b2a1f9c6fcc75adbc1</uuid>
+                    <name>UrBackup Client: connected (internet server)</name>
                     <type>ZABBIX_ACTIVE</type>
                     <key>urbackup-client.internet-status.connected</key>
                     <delay>10m</delay>
                     <history>14d</history>
                     <trends>60d</trends>
-                    <applications>
-                        <application>
-                            <name>UrBackup Client</name>
-                        </application>
-                    </applications>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>UrBackup Client</value>
+                        </tag>
+                    </tags>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&lt;&gt;1</expression>
+                            <uuid>49d4954d86844bc6b6f3ae9312aa380b</uuid>
+                            <expression>last(/Template urbackupclient-userparams by Zabbix agent active/urbackup-client.internet-status.connected)&lt;&gt;1</expression>
                             <name>UrBackup Client: disconnected from internet server</name>
                             <priority>AVERAGE</priority>
                         </trigger>
                     </triggers>
                 </item>
                 <item>
-                    <name>UrBackup Client - service active</name>
+                    <uuid>831f4da4782044f1adf7c0c81a5b0911</uuid>
+                    <name>UrBackup Client: service active</name>
                     <type>ZABBIX_ACTIVE</type>
                     <key>urbackup-client.service.active</key>
                     <history>14d</history>
                     <trends>60d</trends>
-                    <applications>
-                        <application>
-                            <name>UrBackup Client</name>
-                        </application>
-                    </applications>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>UrBackup Client</value>
+                        </tag>
+                    </tags>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&lt;&gt;1</expression>
+                            <uuid>ddcf459878d041759915cae1aa3d2175</uuid>
+                            <expression>last(/Template urbackupclient-userparams by Zabbix agent active/urbackup-client.service.active)&lt;&gt;1</expression>
                             <name>UrBackup Client: service is not active (i.e. running)</name>
                             <priority>HIGH</priority>
                         </trigger>
                     </triggers>
                 </item>
                 <item>
-                    <name>UrBackup Client - service enabled</name>
+                    <uuid>cd6e30a95de94ae29ec6695491cb0926</uuid>
+                    <name>UrBackup Client: service enabled</name>
                     <type>ZABBIX_ACTIVE</type>
                     <key>urbackup-client.service.enabled</key>
                     <delay>30m</delay>
                     <history>14d</history>
                     <trends>60d</trends>
-                    <applications>
-                        <application>
-                            <name>UrBackup Client</name>
-                        </application>
-                    </applications>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>UrBackup Client</value>
+                        </tag>
+                    </tags>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&lt;&gt;1</expression>
+                            <uuid>dad7a988ddd849218ba1beb213397f3b</uuid>
+                            <expression>last(/Template urbackupclient-userparams by Zabbix agent active/urbackup-client.service.enabled)&lt;&gt;1</expression>
                             <name>UrBackup Client: service is disabled</name>
                             <priority>AVERAGE</priority>
                             <manual_close>YES</manual_close>
@@ -84,23 +90,41 @@
                     </triggers>
                 </item>
                 <item>
-                    <name>UrBackup Client - service failed</name>
+                    <uuid>5073f43a34bd43058495dcf283ec7e51</uuid>
+                    <name>UrBackup Client: service failed</name>
                     <type>ZABBIX_ACTIVE</type>
                     <key>urbackup-client.service.failed</key>
                     <history>14d</history>
                     <trends>60d</trends>
-                    <applications>
-                        <application>
-                            <name>UrBackup Client</name>
-                        </application>
-                    </applications>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>UrBackup Client</value>
+                        </tag>
+                    </tags>
                     <triggers>
                         <trigger>
-                            <expression>{last()}&lt;&gt;0</expression>
+                            <uuid>af0967692603483f8c76116c590598af</uuid>
+                            <expression>last(/Template urbackupclient-userparams by Zabbix agent active/urbackup-client.service.failed)&lt;&gt;0</expression>
                             <name>UrBackup Client: service is in failed state</name>
                             <priority>HIGH</priority>
                         </trigger>
                     </triggers>
+                </item>
+                <item>
+                    <uuid>5211e45054ec443fbf81a5e610bfbc37</uuid>
+                    <name>UrBackup Client Template: userparams file version</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>urbackup-client.userparams-version</key>
+                    <delay>30m</delay>
+                    <history>14d</history>
+                    <trends>60d</trends>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>UrBackup Client</value>
+                        </tag>
+                    </tags>
                 </item>
             </items>
         </template>
