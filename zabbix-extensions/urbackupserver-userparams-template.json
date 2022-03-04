@@ -1,0 +1,282 @@
+{
+    "zabbix_export": {
+        "version": "5.4",
+        "date": "2022-03-04T16:45:58Z",
+        "groups": [
+            {
+                "uuid": "a571c0d144b14fd4a87a9d9b2aa9fcd6",
+                "name": "Templates/Applications"
+            }
+        ],
+        "templates": [
+            {
+                "uuid": "7f10aed0369e498c8f88d2c3e13bf3f7",
+                "template": "Template urbackupserver-userparams by Zabbix agent active",
+                "name": "Template urbackupserver-userparams by Zabbix agent active",
+                "description": "Corresponding user parameters file and installation instructions can be found at https://github.com/bartmichu/urbackup-extras/tree/master/zabbix-extensions",
+                "groups": [
+                    {
+                        "name": "Templates/Applications"
+                    }
+                ],
+                "items": [
+                    {
+                        "uuid": "8628b30d935443d88e6522aabda671ea",
+                        "name": "UrBackup Server: web interface accessible (HTTP)",
+                        "type": "SIMPLE",
+                        "key": "net.tcp.service[http,,80]",
+                        "delay": "10m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "valuemap": {
+                            "name": "Service state"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "02f1a8fa820340beabbebfcb98eb62e9",
+                                "expression": "max(/Template urbackupserver-userparams by Zabbix agent active/net.tcp.service[http,,80],#3)=0",
+                                "name": "UrBackup Server: web interface is not accessible (HTTP)",
+                                "priority": "WARNING",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "515c82df0eb14789a80c5920142bcee2",
+                        "name": "UrBackup Server: web interface accessible (internal)",
+                        "type": "SIMPLE",
+                        "key": "net.tcp.service[http,,55414]",
+                        "delay": "10m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "valuemap": {
+                            "name": "Service state"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "c628438dc4034afcb803c834fcc07d35",
+                                "expression": "max(/Template urbackupserver-userparams by Zabbix agent active/net.tcp.service[http,,55414],#3)=0",
+                                "name": "UrBackup Server: web interface is not accessible (internal)",
+                                "priority": "WARNING",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "3e6897f285fd4d828101780ee35a1ad3",
+                        "name": "UrBackup Server: web interface accessible (HTTPS)",
+                        "type": "SIMPLE",
+                        "key": "net.tcp.service[https,,443]",
+                        "delay": "10m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "valuemap": {
+                            "name": "Service state"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "4bc991bc4f9c4eb184ff09df531e422a",
+                                "expression": "max(/Template urbackupserver-userparams by Zabbix agent active/net.tcp.service[https,,443],#3)=0",
+                                "name": "UrBackup Server: web interface is not accessible (HTTPS)",
+                                "priority": "WARNING",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "9ef4626bddb94af5b5314dc86dcb949d",
+                        "name": "UrBackup Server: internet server accessible",
+                        "type": "SIMPLE",
+                        "key": "net.tcp.service[tcp,,55415]",
+                        "delay": "10m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "valuemap": {
+                            "name": "Service state"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "842e49781a5c444da7b4cd3b5b608d69",
+                                "expression": "max(/Template urbackupserver-userparams by Zabbix agent active/net.tcp.service[tcp,,55415],#3)=0",
+                                "name": "UrBackup Server: internet server is not accessible",
+                                "priority": "WARNING"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "2d9ddfc397f0425590bed0f23d3223f6",
+                        "name": "UrBackup Server: package updates",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "urbackup-server.package.upgradeable",
+                        "delay": "30m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "description": "Check if package update is available for UrBackup Server.\n\nExpected return value: 1 - upgrades pending, 0 - no pending upgrades.",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "f6a76e717a7b47bfbc920aae20ce0118",
+                                "expression": "last(/Template urbackupserver-userparams by Zabbix agent active/urbackup-server.package.upgradeable)>0",
+                                "name": "UrBackup Server: package update is available",
+                                "priority": "INFO",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "078131f2ea194835bf237fb4986a8bcd",
+                        "name": "UrBackup Server: service active",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "urbackup-server.service.active",
+                        "history": "14d",
+                        "trends": "30d",
+                        "description": "Check if UrBackup Server service is currently active (i.e. running).\n\nExpected return value: 1 - is active, 0 - is not active.",
+                        "valuemap": {
+                            "name": "Service state"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "6f9b3761cfaf45b6a43ee3df831280c5",
+                                "expression": "last(/Template urbackupserver-userparams by Zabbix agent active/urbackup-server.service.active)=0",
+                                "name": "UrBackup Server: service is not active (i.e. running)",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "34455a32071245f59a70e7a257f91234",
+                        "name": "UrBackup Server: service enabled",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "urbackup-server.service.enabled",
+                        "delay": "30m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "description": "Check if UrBackup Server service is enabled at system startup.\n\nExpected return value: 1 - is enabled, 0 - is not enabled.",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "0829f9b51f14443e870063426f816212",
+                                "expression": "last(/Template urbackupserver-userparams by Zabbix agent active/urbackup-server.service.enabled)=0",
+                                "name": "UrBackup Server: service is disabled",
+                                "priority": "AVERAGE",
+                                "manual_close": "YES"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "6b32e4cabc32447f87c461ec15c33464",
+                        "name": "UrBackup Server: service failed",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "urbackup-server.service.failed",
+                        "history": "14d",
+                        "trends": "30d",
+                        "description": "Check if UrBackup Server service is currently in a \"failed\" state.\n\nExpected return value: 1 - is failed, 0 - is not failed.",
+                        "valuemap": {
+                            "name": "Alarm state"
+                        },
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ],
+                        "triggers": [
+                            {
+                                "uuid": "be8aa32f01294cd080c1a46d3f182bc9",
+                                "expression": "last(/Template urbackupserver-userparams by Zabbix agent active/urbackup-server.service.failed)=1",
+                                "name": "UrBackup Server: service is in failed state",
+                                "priority": "HIGH"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a865ff73ee9a4cd0a541389e9a972a18",
+                        "name": "UrBackup Server Template: userparams file version",
+                        "type": "ZABBIX_ACTIVE",
+                        "key": "urbackup-server.userparams-version",
+                        "delay": "30m",
+                        "history": "14d",
+                        "trends": "30d",
+                        "description": "Return version number of userparams file.\nUsed internally within the template.",
+                        "tags": [
+                            {
+                                "tag": "Application",
+                                "value": "UrBackup Server"
+                            }
+                        ]
+                    }
+                ],
+                "valuemaps": [
+                    {
+                        "uuid": "45cb1b4d7a2949f7b0eb860ff8d5d635",
+                        "name": "Alarm state",
+                        "mappings": [
+                            {
+                                "value": "0",
+                                "newvalue": "Ok"
+                            },
+                            {
+                                "value": "1",
+                                "newvalue": "Alarm"
+                            }
+                        ]
+                    },
+                    {
+                        "uuid": "a253c3b8bf8c43c987b44648cfa46430",
+                        "name": "Service state",
+                        "mappings": [
+                            {
+                                "value": "0",
+                                "newvalue": "Down"
+                            },
+                            {
+                                "value": "1",
+                                "newvalue": "Up"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

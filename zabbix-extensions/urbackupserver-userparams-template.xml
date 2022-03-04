@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>5.4</version>
-    <date>2021-11-22T17:53:25Z</date>
+    <date>2022-03-04T16:45:56Z</date>
     <groups>
         <group>
             <uuid>a571c0d144b14fd4a87a9d9b2aa9fcd6</uuid>
@@ -135,6 +135,9 @@
                     <delay>30m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
+                    <description>Check if package update is available for UrBackup Server.
+
+Expected return value: 1 - upgrades pending, 0 - no pending upgrades.</description>
                     <tags>
                         <tag>
                             <tag>Application</tag>
@@ -145,7 +148,7 @@
                         <trigger>
                             <uuid>f6a76e717a7b47bfbc920aae20ce0118</uuid>
                             <expression>last(/Template urbackupserver-userparams by Zabbix agent active/urbackup-server.package.upgradeable)&gt;0</expression>
-                            <name>UrBackup Server: package can be updated</name>
+                            <name>UrBackup Server: package update is available</name>
                             <priority>INFO</priority>
                             <manual_close>YES</manual_close>
                         </trigger>
@@ -158,6 +161,9 @@
                     <key>urbackup-server.service.active</key>
                     <history>14d</history>
                     <trends>30d</trends>
+                    <description>Check if UrBackup Server service is currently active (i.e. running).
+
+Expected return value: 1 - is active, 0 - is not active.</description>
                     <valuemap>
                         <name>Service state</name>
                     </valuemap>
@@ -184,6 +190,9 @@
                     <delay>30m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
+                    <description>Check if UrBackup Server service is enabled at system startup.
+
+Expected return value: 1 - is enabled, 0 - is not enabled.</description>
                     <tags>
                         <tag>
                             <tag>Application</tag>
@@ -207,6 +216,9 @@
                     <key>urbackup-server.service.failed</key>
                     <history>14d</history>
                     <trends>30d</trends>
+                    <description>Check if UrBackup Server service is currently in a &quot;failed&quot; state.
+
+Expected return value: 1 - is failed, 0 - is not failed.</description>
                     <valuemap>
                         <name>Alarm state</name>
                     </valuemap>
@@ -233,6 +245,8 @@
                     <delay>30m</delay>
                     <history>14d</history>
                     <trends>30d</trends>
+                    <description>Return version number of userparams file.
+Used internally within the template.</description>
                     <tags>
                         <tag>
                             <tag>Application</tag>
