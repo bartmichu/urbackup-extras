@@ -22,6 +22,5 @@ C:\Users\:\AppData\Local\Mozilla\Firefox\Profiles\:\cache;
 C:\Users\:\AppData\Local\Mozilla\Firefox\Profiles\:\cache2;
 C:\Users\:\AppData\Local\Packages;
 C:\Users\:\AppData\Local\Temp;
-C:\Users\:\OneDrive;
 C:\Windows;
 C:\Windows.old;
