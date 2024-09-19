@@ -1,6 +1,6 @@
 A:|A/follow_symlinks,symlinks_optional,share_hashes,optional;
 B:|B/follow_symlinks,symlinks_optional,share_hashes,optional;
-C:|C/follow_symlinks,symlinks_optional,share_hashes,optional;
+C:|C/follow_symlinks,symlinks_optional,share_hashes;
 D:|D/follow_symlinks,symlinks_optional,share_hashes,optional;
 E:|E/follow_symlinks,symlinks_optional,share_hashes,optional;
 F:|F/follow_symlinks,symlinks_optional,share_hashes,optional;
